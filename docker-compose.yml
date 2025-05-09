@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  job-finder:
+    build: .
+    environment:
+      - SERPAPI_KEY=${SERPAPI_KEY}
+      - NOTIFICATION_ENABLED=${NOTIFICATION_ENABLED}
+    volumes:
+      - ./config:/app/config
+      - job_data:/data
+    restart: unless-stopped
+
+volumes:
+  job_data:
